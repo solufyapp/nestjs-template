@@ -6,6 +6,6 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=postgres
     ports:
-      - '5433:5432'
+      - '5432:5432'
     volumes:
       - ./postgresql_data:/var/lib/postgresql/data
