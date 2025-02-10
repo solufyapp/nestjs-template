@@ -31,6 +31,12 @@
     {
       "fileMatch": ["biome.json"],
       "url": "./node_modules/@biomejs/biome/configuration_schema.json"
+    },
+    {
+      "fileMatch": ["nest-cli.json"],
+      "url": "https://json.schemastore.org/nest-cli"
     }
-  ]
+  ],
+
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
