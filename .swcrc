@@ -3,12 +3,17 @@
     "parser": {
       "syntax": "typescript"
     },
-    "target": "esnext",
+    "experimental": {
+      "keepImportAssertions": true
+    },
+    "target": "es2021",
     "baseUrl": "./"
   },
+
   "module": {
     "type": "es6",
     "resolveFully": true
   },
+
   "sourceMaps": true
 }

@@ -7,7 +7,7 @@
   "license": "MIT",
   "packageManager": "pnpm@10.2.1",
   "scripts": {
-    "build": "nest build",
+    "build": "nest build --type-check",
     "format": "biome format --write .",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -16,7 +16,6 @@
     "check-types": "tsc --noEmit -p tsconfig.build.json",
     "lint": "biome check . --fix",
     "lint:ci": "biome check .",
-    "lint:staged": "biome check . --staged --no-errors-on-unmatched",
     "db:generate": "prisma generate",
     "db:studio": "prisma studio",
     "db:push": "prisma db push --skip-generate",
