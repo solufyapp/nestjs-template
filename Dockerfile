@@ -1,36 +1,41 @@
-# Base image
-FROM node:20-slim
+FROM node:20-alpine AS base
 
-# PNPM env variables
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+RUN apk add --no-cache openssl
+RUN npm install -g pnpm
 
-# Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Required for Prisma Client to work in container
-RUN apt-get update && apt-get install -y openssl
+FROM base AS dependencies
 
-# Install pnpm
 COPY package.json pnpm-lock.yaml ./
-RUN corepack enable && corepack prepare
 
-# Install dependencies based on the preferred package manager
-ENV CI=true
-RUN pnpm fetch
-RUN pnpm install --frozen-lockfile --recursive --prefer-offline
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
 
-# Bundle app source
-COPY . ./
+FROM dependencies AS builder
 
-# Generate prisma client
+COPY prisma ./prisma
+
+RUN pnpm install --offline
 RUN pnpm db:generate
 
-# Creates a "dist" folder with the production build
-RUN pnpm build
+COPY . .
 
-# Set environment variables for production
+RUN pnpm build
+RUN pnpm prune --prod
+
+FROM node:20-alpine AS production
+
+RUN apk add --no-cache openssl
+
 ENV NODE_ENV=production
 
-# Start the server using the production build
-CMD [ "node", "dist/main.js" ]
+WORKDIR /app
+
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/prisma ./prisma
+
+EXPOSE 5000
+
+CMD ["node", "dist/main.js"]
