@@ -1,8 +1,8 @@
 import { ConfigifyModule } from "@itgorillaz/configify";
 import { Module } from "@nestjs/common";
 
-import * as Clients from "@/clients/index.js";
-import * as Modules from "@/modules/index.js";
+import * as Clients from "@/clients";
+import * as Modules from "@/modules";
 
 @Module({
   imports: [

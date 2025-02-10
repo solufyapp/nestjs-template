@@ -7,7 +7,7 @@ import {
 import { Reflector } from "@nestjs/core";
 import { Observable, map } from "rxjs";
 
-import { IGNORE_RESPONSE_TRANSFORM_KEY } from "../decorators/ignore-response-transform.decorator.js";
+import { IGNORE_RESPONSE_TRANSFORM_KEY } from "@/common/decorators/ignore-response-transform.decorator";
 
 export interface CommonResponse<T> {
   success: true;
