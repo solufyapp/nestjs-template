@@ -1,7 +1,7 @@
-# compiled output
-/dist
-/node_modules
-/build
+# Build
+dist
+node_modules
+build
 
 # Logs
 logs
@@ -16,12 +16,12 @@ lerna-debug.log*
 .DS_Store
 
 # IDEs and editors
-/.idea
+.idea
 .project
 .classpath
-.c9/
+.c9
 *.launch
-.settings/
+.settings
 *.sublime-workspace
 
 # IDE - VSCode
@@ -31,14 +31,10 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+# Environment variable files
+*.env*
 
-# temp directory
+# Temp directory
 .temp
 .tmp
 
@@ -52,4 +48,4 @@ pids
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Local database
-/postgresql_data
+postgresql_data
