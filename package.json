@@ -6,6 +6,9 @@
   "private": true,
   "license": "MIT",
   "packageManager": "pnpm@10.2.1",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "nest build --type-check",
     "format": "biome format --write .",
