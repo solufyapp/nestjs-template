@@ -29,7 +29,6 @@
 - [SWC](https://swc.rs/): faster compiling times than Webpack.
 - [BiomeJS](https://biomejs.dev/): faster linting and formatting than ESLint and Prettier.
 - [Configify](https://github.com/it-gorillaz/configify): easy env variables management for NestJS. (compatible with class-validator)
-- [Husky](https://typicode.github.io/husky/): fast native git hooks.
 - Premade CI workflow for Github.
 - Using ESM modules.
 
