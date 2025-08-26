@@ -14,11 +14,24 @@
         "noStaticOnlyClass": "off"
       },
       "correctness": {
-        "useArrayLiterals": "off"
+        "noUnusedImports": { "level": "warn", "fix": "safe" },
+        "noUnusedVariables": { "level": "warn", "fix": "none" },
+        "noUnusedFunctionParameters": "warn"
       },
       "style": {
         "useBlockStatements": "off",
-        "useImportType": "off"
+        "useImportType": "off",
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error",
+        "useArrayLiterals": "off"
       },
       "suspicious": {
         "noExplicitAny": "off"
@@ -36,8 +49,34 @@
     "attributePosition": "auto"
   },
 
-  "organizeImports": {
-    "enabled": true
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              {
+                "type": true,
+                "source": [
+                  ":NODE:",
+                  ":URL:",
+                  ":PACKAGE_WITH_PROTOCOL:",
+                  ":PACKAGE:"
+                ]
+              },
+              [":NODE:", ":URL:", ":PACKAGE_WITH_PROTOCOL:", ":PACKAGE:"],
+              ":BLANK_LINE:",
+              { "type": true, "source": "@/**" },
+              "@/**",
+              ":BLANK_LINE:",
+              { "type": true, "source": ":PATH:" },
+              ":PATH:"
+            ]
+          }
+        }
+      }
+    }
   },
 
   "javascript": {

@@ -55,10 +55,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
   }
 
   private makeRespond(response: FastifyReply) {
-    return (data?: {
-      status?: number;
-      error?: string | string[];
-    }) => {
+    return (data?: { status?: number; error?: string | string[] }) => {
       const status = data?.status || this.defaultStatus;
       const error = data?.error || this.defaultError;
       return response.status(status).send({ success: false, error });
