@@ -1,4 +1,4 @@
-FROM node:20-alpine AS base
+FROM node:24-alpine AS base
 
 RUN apk add --no-cache openssl
 RUN npm install -g pnpm
@@ -7,7 +7,7 @@ WORKDIR /app
 
 FROM base AS dependencies
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-*.yaml ./
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
 
@@ -23,7 +23,7 @@ COPY . .
 RUN pnpm build
 RUN pnpm prune --prod
 
-FROM node:20-alpine AS production
+FROM node:24-alpine AS production
 
 RUN apk add --no-cache openssl
 
