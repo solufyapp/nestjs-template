@@ -1,4 +1,4 @@
-FROM node:24-alpine AS base
+FROM node:25-alpine AS base
 
 RUN apk add --no-cache openssl
 RUN npm install -g pnpm
@@ -23,7 +23,7 @@ COPY . .
 RUN pnpm build
 RUN pnpm prune --prod
 
-FROM node:24-alpine AS production
+FROM node:25-alpine AS production
 
 RUN apk add --no-cache openssl
 
